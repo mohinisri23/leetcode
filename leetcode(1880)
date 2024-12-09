@@ -1,0 +1,19 @@
+#this file contains solution of leetcode problem 1880(check if word equal summation of two words)  
+class Solution:
+    def isSumEqual(self, firstWord: str, secondWord: str, targetWord: str) -> bool:
+        alpha=['a','b','c','d','e','f','g','h','i','j']
+        a=""
+        for i in  firstWord:
+            a=a+str(alpha.index(i))
+        b=""
+        for i in secondWord:
+            b=b+str(alpha.index(i))
+        c=""
+        for i in targetWord:
+            c=c+str(alpha.index(i))
+        if int(a)+int(b)==int(c):
+            return True
+        else:
+            return False                
+        
+View less
