@@ -1,0 +1,13 @@
+#this file contains the solution of leetcode problem 160(intersection if two linked lists
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        if not headA or not headB:
+            return None
+             
+        ia,jb=headA,headB
+        while ia != jb:
+            ia= headB if ia is None else ia.next
+            jb= headA if jb is None else jb.next
+
+        return ia         
+
