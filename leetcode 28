@@ -1,0 +1,28 @@
+#this file contains the solution of the leetcode problem 28: Find the index of the first occurrence in a string in C Language.
+
+#include <string.h>
+
+int strStr(char* haystack, char* needle) {
+    int haylen = strlen(haystack);
+    int needlelen = strlen(needle);
+    if (needlelen == 0) {
+        return 0;
+    }
+
+    
+    for (int i = 0; i <= haylen - needlelen; i++) {
+        int j;
+        
+        for (j = 0; j < needlelen; j++) {
+            if (haystack[i + j] != needle[j]) {
+                break;
+            }
+        }
+        
+        if (j == needlelen) {
+            return i;
+        }
+    }
+    
+        return -1;
+}
