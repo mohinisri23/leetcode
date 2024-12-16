@@ -1,0 +1,21 @@
+#this file contains the solution of leetcode problem 643 (Maximum Average Subarray 1) in C Language
+
+double findMaxAverage(int* nums, int numsSize, int k) {
+    int wsum=0;
+    for(int i=0;i<k;i++){
+        wsum+=nums[i];
+    }
+    int maxsum=wsum;
+    for(int i=k;i<numsSize;i++){
+        wsum+=nums[i]-nums[i-k];
+        if(wsum>maxsum){
+            maxsum=wsum;
+        }
+
+    }
+    return (double)maxsum / k;
+
+
+    
+    
+}
