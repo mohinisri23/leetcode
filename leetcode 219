@@ -1,0 +1,16 @@
+#this file contains the solution of the leetcode problem 219(contains duplicate 2)
+#in python3
+
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        s={}
+        for i,val in enumerate(nums):
+            if val in s and i-s[val]<=k :
+                return True
+            s[val]=i
+           
+        return False            
+    
+        
+        
+        
