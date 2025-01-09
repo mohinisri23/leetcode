@@ -1,0 +1,13 @@
+#this file contains the solutions pf the leetcode question 4(Median of two sorted arrays)
+
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        merge_list=sorted(nums1+nums2)
+        n=len(merge_list)
+        if(n%2!=0):
+            median=merge_list[n//2]
+        else:
+            median=(merge_list[n//2-1]+merge_list[n//2])/2
+        return median           
+        
+        
