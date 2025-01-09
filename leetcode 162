@@ -1,0 +1,15 @@
+//this file contains the solution of the leetcode question 162 (Find Peak Element)
+int findPeakElement(int* nums, int numsSize) {
+    int l=0,r=numsSize-1,mid=0;
+    while(l<r){
+        mid=(l+r)/2;
+        if(nums[mid]<nums[mid+1]){
+            l=mid+1;
+        }
+        else{
+            r=mid;
+        }
+    }
+    return l;
+    
+}
