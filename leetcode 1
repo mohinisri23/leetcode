@@ -1,4 +1,4 @@
-#this file contains the solution of the leetcode question 2(two sum)
+#this file contains the solution of the leetcode question 1(two sum)
 #include <stdio.h>
 #include <stdlib.h>
 
