@@ -1,0 +1,74 @@
+#this file contains the solution of the leetcode question 2(two sum)
+#include <stdio.h>
+#include <stdlib.h>
+
+int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
+    
+    int* result = (int*)malloc(2 * sizeof(int));
+    *returnSize = 2;  
+    
+
+    typedef struct {
+        int key;
+        int value;
+    } HashMapEntry;
+
+    typedef struct {
+        HashMapEntry* entries;
+        int capacity;
+        int size;
+    } HashMap;
+
+    HashMap map;
+    map.capacity = numsSize * 2;  
+    map.size = 0;
+    map.entries = (HashMapEntry*)malloc(map.capacity * sizeof(HashMapEntry));
+    
+    
+    for (int i = 0; i < map.capacity; i++) {
+        map.entries[i].key = 2147483647;  
+    }
+
+    
+    int hash(int key) {
+        return (key % map.capacity + map.capacity) % map.capacity;
+    }
+
+    
+    void insert(int key, int value) {
+        int index = hash(key);
+        while (map.entries[index].key != 2147483647) { 
+            index = (index + 1) % map.capacity;
+        }
+        map.entries[index].key = key;
+        map.entries[index].value = value;
+    }
+
+    int search(int key) {
+        int index = hash(key);
+        while (map.entries[index].key != 2147483647) { 
+            if (map.entries[index].key == key) {
+                return map.entries[index].value;
+            }
+            index = (index + 1) % map.capacity;
+        }
+        return -1;  
+    }
+
+    
+    for (int i = 0; i < numsSize; i++) {
+        int complement = target - nums[i];
+        int complementIndex = search(complement); 
+        if (complementIndex != -1) {
+            result[0] = complementIndex;  
+            result[1] = i;                
+            free(map.entries);            
+            return result;
+        }
+        
+        insert(nums[i], i);
+    }
+
+    free(map.entries);  
+    return result;      
+}
