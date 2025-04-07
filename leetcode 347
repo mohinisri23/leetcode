@@ -1,0 +1,10 @@
+#python solution for 347 top k frequent elements
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        f=defaultdict(int)
+        for i in range(len(nums)):
+            f[nums[i]]+=1
+        f=dict(sorted(f.items(),key=lambda item: item[1], reverse=True))
+        return list(f.keys()) [:k]
+
+        
