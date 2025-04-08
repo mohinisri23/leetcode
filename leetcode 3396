@@ -1,0 +1,16 @@
+#python solution for problem no 3396 Minimum Number of Operation to make elements in array distinct
+class Solution(object):
+    def minimumOperations(self, nums):
+        m=[0]*101
+        for i in range(len(nums) -1,-1,-1):
+            m[nums[i]]+=1
+            if m[nums[i]]==2:
+                return (i+3)//3
+        return 0
+            
+        
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        
