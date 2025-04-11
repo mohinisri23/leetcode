@@ -1,0 +1,16 @@
+#python solution for problem number 2843 Count Symmetric Integers
+class Solution:
+    def countSymmetricIntegers(self, low: int, high: int) -> int:
+        count=0
+        for i in range(low,high+1):
+            if i <100 and i%11==0:
+                count+=1
+            if 1000 <=i <10000:
+                left_sum= i//1000+i%1000//100
+                right_sum= i%100 //10 + i%10
+                if left_sum==right_sum:
+                    count+=1
+        return count
+
+
+        
