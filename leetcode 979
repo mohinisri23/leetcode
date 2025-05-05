@@ -1,0 +1,25 @@
+#python3 solution for leetcode problem number 979 Dsitribute coins in Binary Tree 
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def distributeCoins(self, root: Optional[TreeNode]) -> int:
+        self.moves=0
+
+        def dfs(current):
+            if current==None:
+                return 0
+           
+            leftcoins=dfs(current.left)
+            rightcoins=dfs(current.right)
+            self.moves=self.moves+abs(leftcoins)+abs(rightcoins)
+            return (current.val-1)+leftcoins+rightcoins
+
+        dfs(root)
+
+        return self.moves
+        
