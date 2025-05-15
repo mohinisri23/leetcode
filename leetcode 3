@@ -1,0 +1,24 @@
+#python3 solution for problem number 3 Longest Substring Without Repeating Characters
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        l=len(s)
+        maxlen=0
+        charset=set()
+        left=0
+
+        for r in range(l):
+             #r=right pointer
+
+             if s[r] not in charset:
+                charset.add(s[r])
+                maxlen=max(maxlen,r-left+1)
+             else:
+                while s[r] in charset:
+                    charset.remove(s[left])
+                    left =left+1
+                charset.add(s[r])
+        return maxlen
+
+
+    
+        
