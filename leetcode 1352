@@ -1,0 +1,42 @@
+#python solution for leetcode problem number 1352 (Product of last k number)
+
+class ProductOfNumbers(object):
+
+    def __init__(self):
+        self.prefix_sum=[1]
+        self.size=0
+        
+
+    def add(self, num):
+        if num ==0:
+            self.prefix_sum=[1]
+            self.size=0
+
+        else:
+            self.prefix_sum.append(self.prefix_sum[self.size]*num)
+            self.size+=1
+
+
+        """
+        :type num: int
+        :rtype: None
+        """
+        
+
+    def getProduct(self, k):
+        if k > self.size:
+            return 0
+        return (self.prefix_sum[self.size]//self.prefix_sum[self.size-k])
+        
+
+        """
+        :type k: int
+        :rtype: int
+        """
+        
+
+
+# Your ProductOfNumbers object will be instantiated and called as such:
+# obj = ProductOfNumbers()
+# obj.add(num)
+# param_2 = obj.getProduct(k)
