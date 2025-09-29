@@ -1,0 +1,27 @@
+#Python solution for leetcode problem number 897 (Increasing order serach tree)
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def increasingBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        arr=[]
+
+        def inorderTraversal(root):
+            if not root :
+                return None
+            inorderTraversal(root.left)
+            arr.append(root)
+            inorderTraversal(root.right)
+        inorderTraversal(root)
+
+        for i in range(len(arr)-1):
+            arr[i].left=None
+            arr[i].right=arr[i+1]
+            arr[-1].left=None
+            arr[-1].right=None
+        return arr[0]
+        
+        
