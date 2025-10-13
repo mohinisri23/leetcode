@@ -1,0 +1,38 @@
+#python3 solution for leetcode problem number 547(Number of Provinces)
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        count=0
+        m=len(isConnected)
+        flag=[False]*m
+        def dfs(i):
+            flag[i]=True
+            for j in range(m):
+                if isConnected[i][j] == 1 and not flag[j]:
+                    dfs(j)
+        for i in range(m):
+            if not flag[i] :
+                dfs(i)
+                count+=1
+        return count
+
+
+        
+
+        
+
+
+
+
+     
+        
+                    
+            
+              
+
+
+
+                
+
+
+        
+        
