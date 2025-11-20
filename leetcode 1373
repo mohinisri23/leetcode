@@ -1,0 +1,31 @@
+#python solution for leetcode problem number 1373 (Maximum Sum BST in Binary Tree)
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxSumBST(self, root: Optional[TreeNode]) -> int:
+        Max_sum=0
+        def dfs(root) :
+            nonlocal Max_sum
+            if not root :
+                return (True, float('inf'), float('-inf'), 0)
+            L_isBST, L_Min, L_Max,L_Sum= dfs(root.left)
+            R_isBST, R_Min, R_Max, R_Sum= dfs(root.right)
+
+            if (L_isBST and R_isBST and L_Max < root.val < R_Min) :
+                 cur_sum=L_Sum+R_Sum+root.val
+                 Max_sum=max(Max_sum,cur_sum)
+                 return (True, min(L_Min, root.val), max(R_Max,root.val), cur_sum)
+            
+            
+            return False, 0, 0, 0
+            
+        dfs(root)
+        return Max_sum
+        
+        
+        
