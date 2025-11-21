@@ -1,0 +1,20 @@
+//C++ solution for leetcode problem number 485 (Max Consecutive Ones)
+class Solution {
+public:
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        int count=0;
+        int consecutive_count=0;
+        int n=nums.size();
+        for(int i=0; i<n;i++) {
+            if(nums[i]==1){
+                count++;
+                consecutive_count=max(count, consecutive_count);
+            }
+            else{
+                count=0;
+            }
+        }
+        return consecutive_count;
+        
+    }
+};
